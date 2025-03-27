@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Interactive weather animations demo showcasing various weather effects">
+    <title>Weather Animations Demo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+        <i class="fas fa-moon" aria-hidden="true"></i>
+    </button>
+
+    <div class="container">
+        <header>
+            <h1>Weather Animations Demo</h1>
+            <p class="description">Explore various weather animations from your weather app.</p>
+        </header>
+
+        <div class="control-section">
+            <h2 class="section-title">Weather Effects</h2>
+            <div class="button-group" role="group" aria-label="Weather effect buttons">
+                <button id="rain-light" class="primary" aria-pressed="false">
+                    <i class="fas fa-cloud-rain" aria-hidden="true"></i> Light Rain
+                </button>
+                <button id="rain-moderate" aria-pressed="false">
+                    <i class="fas fa-cloud-rain" aria-hidden="true"></i> Moderate Rain
+                </button>
+                <button id="rain-heavy" aria-pressed="false">
+                    <i class="fas fa-cloud-showers-heavy" aria-hidden="true"></i> Heavy Rain
+                </button>
+                <button id="snow" aria-pressed="false">
+                    <i class="fas fa-snowflake" aria-hidden="true"></i> Snow
+                </button>
+                <button id="thunderstorm" aria-pressed="false">
+                    <i class="fas fa-bolt" aria-hidden="true"></i> Thunderstorm
+                </button>
+                <button id="fog" aria-pressed="false">
+                    <i class="fas fa-smog" aria-hidden="true"></i> Fog/Mist
+                </button>
+                <button id="cloudy" aria-pressed="false">
+                    <i class="fas fa-cloud" aria-hidden="true"></i> Cloudy
+                </button>
+                <button id="partly-cloudy" aria-pressed="false">
+                    <i class="fas fa-cloud-sun" aria-hidden="true"></i> Partly Cloudy
+                </button>
+                <button id="clear" aria-pressed="false">
+                    <i class="fas fa-sun" aria-hidden="true"></i> Clear/Sunny
+                </button>
+            </div>
+
+            <button id="clear-effects" class="clear-effects" aria-label="Clear all weather effects">
+                <i class="fas fa-times-circle" aria-hidden="true"></i> Clear All Effects
+            </button>
+
+            <div class="tags" role="tablist" aria-label="Special weather effects">
+                <span class="tag" role="tab" tabindex="0">Drizzle</span>
+                <span class="tag" role="tab" tabindex="0">Haze</span>
+                <span class="tag" role="tab" tabindex="0">Wind</span>
+                <span class="tag" role="tab" tabindex="0">Night</span>
+                <span class="tag" role="tab" tabindex="0">Overcast</span>
+                <span class="tag" role="tab" tabindex="0">Rainbow</span>
+                <span class="tag" role="tab" tabindex="0">Hurricane</span>
+            </div>
+        </div>
+
+        <div class="demo-area" id="demo-area" aria-live="polite">
+            <span id="demo-text">Select a weather effect to view</span>
+            <div id="demo-info" role="status" aria-live="polite"></div>
+        </div>
+    </div>
+
+    <script src="weather-effects.js"></script>
+    <script src="app.js"></script>
+</body>
+</html> 

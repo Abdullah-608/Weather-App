@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skycast - Weather App</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'sky': {
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="font-[Poppins] bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen transition-colors duration-300">
+    <!-- Gradient Background Elements -->
+    <div class="gradient-bg-container">
+        <div class="gradient-blob blob-1"></div>
+        <div class="gradient-blob blob-2"></div>
+        <div class="gradient-blob blob-3"></div>
+    </div>
+    
+    <!-- Sun Effect Container -->
+    <div class="sun-container">
+        <div class="sun-rays"></div>
+        <div class="sun-glow"></div>
+    </div>
+    
+    <!-- Header with Logo only -->
+    <header class="relative z-10 pt-8 px-6 md:px-8">
+        <a href="demos/weather-animations-demo.html">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center">
+                <i class="fas fa-cloud-sun text-sky-500 text-3xl mr-2"></i>
+                <h1 class="text-2xl font-[Montserrat] font-bold bg-gradient-to-r from-sky-500 to-indigo-500 bg-clip-text text-transparent">Skycast</h1>
+            </div>
+        </a>
+            <div class="flex items-center">
+                <!-- Dark Mode Toggle -->
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:block text-amber-300"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero relative z-10 container mx-auto px-6 md:px-8 pt-10 md:pt-16 pb-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="fade-in">
+                <h1 class="text-4xl md:text-6xl font-[Montserrat] font-bold text-gray-800 leading-tight mb-6">
+                    <span class="block">Weather Forecasts</span>
+                    <span class="bg-gradient-to-r from-sky-500 to-indigo-500 bg-clip-text text-transparent">Made Beautiful</span>
+                </h1>
+                <p class="text-lg text-gray-600 mb-8">Get accurate weather forecasts with beautiful visualizations and real-time updates, wherever you are.</p>
+                
+                <div class="weather-search bg-white p-4 rounded-2xl shadow-xl flex flex-wrap md:flex-nowrap items-center mb-8 hover:shadow-2xl transition-all duration-300">
+                    <i class="fas fa-search text-gray-400 mr-4"></i>
+                    <input type="text" placeholder="Search for a city..." class="flex-grow outline-none text-gray-700 mb-2 md:mb-0">
+                    <button class="md:ml-4 w-full md:w-auto bg-gradient-to-r from-sky-500 to-indigo-500 text-white px-5 py-2 rounded-full hover:shadow-lg transform hover:scale-105 transition-all duration-300">
+                        Check Weather
+                    </button>
+                </div>
+                
+                <div class="flex flex-wrap items-center text-gray-500">
+                    <i class="fas fa-map-marker-alt mr-2"></i>
+                    <span>Popular: </span>
+                    <div class="flex flex-wrap ml-2 gap-2 mt-2">
+                        <span class="city-tag">New York</span>
+                        <span class="city-tag">London</span>
+                        <span class="city-tag">Tokyo</span>
+                        <span class="city-tag">Paris</span>
+                        <span class="city-tag">Sydney</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex justify-center slide-in-right">
+                <div class="weather-card">
+                    <div class="weather-card-content">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h3 class="font-[Montserrat] font-semibold text-xl">San Francisco</h3>
+                                <p class="text-gray-500">Today, 10:30 AM</p>
+                            </div>
+                            <i class="fas fa-sun text-yellow-500 text-5xl"></i>
+                        </div>
+                        
+                        <div class="mt-8 mb-6">
+                            <div class="flex items-end">
+                                <span class="text-6xl font-light">23°</span>
+                                <span class="text-2xl text-gray-600 ml-2 mb-1">C</span>
+                            </div>
+                            <p class="text-indigo-600 font-medium">Sunny</p>
+                        </div>
+                        
+                        <div class="weather-details">
+                            <div class="weather-detail-item">
+                                <i class="fas fa-wind text-blue-400"></i>
+                                <div>
+                                    <p class="label">Wind</p>
+                                    <p class="value">12 km/h</p>
+                                </div>
+                            </div>
+                            <div class="weather-detail-item">
+                                <i class="fas fa-tint text-blue-400"></i>
+                                <div>
+                                    <p class="label">Humidity</p>
+                                    <p class="value">54%</p>
+                                </div>
+                            </div>
+                            <div class="weather-detail-item">
+                                <i class="fas fa-cloud-rain text-blue-400"></i>
+                                <div>
+                                    <p class="label">Rain</p>
+                                    <p class="value">0%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Forecast Preview -->
+    <section class="forecast-preview relative z-10 py-20 bg-gradient-to-br from-indigo-100 to-blue-50">
+        <div class="container mx-auto px-6 md:px-8">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-3xl md:text-4xl font-[Montserrat] font-bold text-gray-800 mb-4">7-Day Forecast</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Plan ahead with our accurate extended forecast.</p>
+            </div>
+            
+            <div class="relative">
+                <!-- Scrolling indicator for mobile -->
+                <div class="md:hidden w-full flex justify-center mb-4">
+                    <div class="px-3 py-1 bg-white bg-opacity-70 rounded-full text-xs text-gray-500 flex items-center">
+                        <i class="fas fa-arrows-left-right mr-2"></i> Swipe to see more
+                    </div>
+                </div>
+                
+                <!-- Forecast cards container -->
+                <div class="forecast-scroll flex flex-nowrap md:flex-wrap md:justify-center overflow-x-auto pb-8 gap-4 md:gap-6 px-1">
+                    <div class="forecast-day-card min-w-[160px] md:min-w-0 md:w-[calc(25%-1.5rem)] lg:w-[calc(14.28%-1.5rem)]">
+                        <p class="day">Monday</p>
+                        <i class="fas fa-cloud-sun text-4xl my-4 text-indigo-500"></i>
+                        <p class="temp">24°C</p>
+                        <p class="condition">Partly Cloudy</p>
+                    </div>
+                    
+                    <div class="forecast-day-card min-w-[160px] md:min-w-0 md:w-[calc(25%-1.5rem)] lg:w-[calc(14.28%-1.5rem)]">
+                        <p class="day">Tuesday</p>
+                        <i class="fas fa-cloud-rain text-4xl my-4 text-blue-500"></i>
+                        <p class="temp">22°C</p>
+                        <p class="condition">Light Rain</p>
+                    </div>
+                    
+                    <div class="forecast-day-card min-w-[160px] md:min-w-0 md:w-[calc(25%-1.5rem)] lg:w-[calc(14.28%-1.5rem)]">
+                        <p class="day">Wednesday</p>
+                        <i class="fas fa-sun text-4xl my-4 text-yellow-500"></i>
+                        <p class="temp">26°C</p>
+                        <p class="condition">Sunny</p>
+                    </div>
+                    
+                    <div class="forecast-day-card min-w-[160px] md:min-w-0 md:w-[calc(25%-1.5rem)] lg:w-[calc(14.28%-1.5rem)]">
+                        <p class="day">Thursday</p>
+                        <i class="fas fa-cloud text-4xl my-4 text-gray-500"></i>
+                        <p class="temp">21°C</p>
+                        <p class="condition">Cloudy</p>
+                    </div>
+                    
+                    <div class="forecast-day-card min-w-[160px] md:min-w-0 md:w-[calc(25%-1.5rem)] lg:w-[calc(14.28%-1.5rem)]">
+                        <p class="day">Friday</p>
+                        <i class="fas fa-cloud-sun text-4xl my-4 text-indigo-500"></i>
+                        <p class="temp">23°C</p>
+                        <p class="condition">Partly Cloudy</p>
+                    </div>
+                    
+                    <div class="forecast-day-card min-w-[160px] md:min-w-0 md:w-[calc(25%-1.5rem)] lg:w-[calc(14.28%-1.5rem)]">
+                        <p class="day">Saturday</p>
+                        <i class="fas fa-sun text-4xl my-4 text-yellow-500"></i>
+                        <p class="temp">25°C</p>
+                        <p class="condition">Sunny</p>
+                    </div>
+                    
+                    <div class="forecast-day-card min-w-[160px] md:min-w-0 md:w-[calc(25%-1.5rem)] lg:w-[calc(14.28%-1.5rem)]">
+                        <p class="day">Sunday</p>
+                        <i class="fas fa-cloud-showers-heavy text-4xl my-4 text-blue-600"></i>
+                        <p class="temp">20°C</p>
+                        <p class="condition">Heavy Rain</p>
+                    </div>
+                </div>
+                
+                <!-- Shadow indicators for scroll -->
+                <div class="absolute top-0 bottom-8 left-0 w-12 bg-gradient-to-r from-indigo-100 to-transparent pointer-events-none md:hidden"></div>
+                <div class="absolute top-0 bottom-8 right-0 w-12 bg-gradient-to-l from-indigo-100 to-transparent pointer-events-none md:hidden"></div>
+            </div>
+        </div>
+    </section>
+    
+    
+    <!-- Footer -->
+    <footer class="relative z-10 bg-gray-900 text-white pt-12 pb-8">
+        <div class="container mx-auto px-6 md:px-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <i class="fas fa-cloud-sun text-sky-400 text-3xl mr-2"></i>
+                        <h3 class="text-2xl font-[Montserrat] font-bold">Skycast</h3>
+                    </div>
+                    <p class="text-gray-400 mb-6">Beautiful, accurate weather forecasting for people who care about the conditions.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="footer-heading">Features</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Daily Forecast</a></li>
+                        <li><a href="#">Hourly Updates</a></li>
+                        <li><a href="#">Weather Maps</a></li>
+                        <li><a href="#">Storm Alerts</a></li>
+                        <li><a href="#">Travel Weather</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="footer-heading">Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">API Documentation</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Weather News</a></li>
+                        <li><a href="#">Climate Reports</a></li>
+                        <li><a href="#">Developers</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="footer-heading">Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
+                <p>&copy; 2025 Skycast Weather App. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>
