@@ -2,9 +2,9 @@
 
 Skycast is a visually stunning weather forecasting web application built with HTML, CSS, and JavaScript. It features beautiful animations, responsive design, and real-time weather data from the OpenWeatherMap API.
 
-![Skycast Weather App](https://example.com/skycast-screenshot.png) 
+![Skycast Weather App]( https://abdullah-608.github.io/Weather-App/) 
 
-## ScreenShots
+##ScreenShots
 Rain Effect
 ![alt text](image.png)
 Wind Effect
@@ -275,7 +275,7 @@ Created with ❤️ by [Your Name]
 
 An interactive web application showcasing various weather animations and effects using pure HTML, CSS, and JavaScript. This demo provides realistic weather visualizations that can be integrated into weather applications.
 
-![Weather Animations Demo](https://via.placeholder.com/800x400?text=Weather+Animations+Demo)
+![Weather Animations Demo](https://abdullah-608.github.io/Weather-App/demos/weather-animations-demo.html)
 
 ## Features
 
